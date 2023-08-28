@@ -21,9 +21,8 @@ private:
     int columns;
     const int rows = 4;
     std::vector<wxTextCtrl *> cells;
-    std::vector<wxTextCtrl *> results;
     wxGridSizer *gridSizerCells;
-    wxGridSizer *gridSizerResults;
+    void setupGrid();
 };
 
 
