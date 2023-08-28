@@ -24,6 +24,10 @@ public:
     void subscribe(Observer *obs) override{
         observers.push_back(obs);
     }
+
+    void unsubscribe(Observer *obs) override{
+        observers.remove(obs);
+    }
 private:
     int columns;
     const int rows = 4;
