@@ -48,7 +48,7 @@ private:
     int columns;
     const int rows = 4;
     std::vector<wxTextCtrl *> cells;
-    wxGridSizer *gridSizerCells;
+    //wxGridSizer *gridSizerCells;
     std::list<Observer *> observers;
 
     void setupGrid();

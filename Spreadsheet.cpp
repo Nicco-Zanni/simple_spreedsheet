@@ -7,7 +7,7 @@
 
 Spreadsheet::Spreadsheet(int numOfColumns, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                          const wxSize &size, long style, const wxString &name) : wxFrame(parent, id, title, pos, size,
-                                                                                         style, name), gridSizerCells(nullptr){
+                                                                                         style, name){
     if(numOfColumns < 2)
         columns = 1;
     else
@@ -23,7 +23,7 @@ void Spreadsheet::setupGrid() {
     auto panel = new wxScrolled<wxPanel>(this, wxID_ANY);
     auto panelSizer = new wxBoxSizer(wxVERTICAL);
 
-    gridSizerCells = new wxGridSizer(rows, columns, 0, 0);
+    auto gridSizerCells = new wxGridSizer(rows, columns, 0, 0);
     panel->SetScrollRate(5, 0);
 
     for (int i = 0; i < rows; i++) {
