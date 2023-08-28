@@ -10,18 +10,26 @@
 #include <wx/textctrl.h>
 #include <wx/sizer.h>
 #include <vector>
+#include <list>
+#include "Observer.h"
+#include "Subject.h"
 
-class Spreadsheet: public wxFrame {
+class Spreadsheet: public wxFrame, public Subject{
 public:
     explicit Spreadsheet(int numOfColumns, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY,
                          const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition,
                          const wxSize &size = wxDefaultSize,
                          long style = wxDEFAULT_FRAME_STYLE, const wxString &name = wxFrameNameStr);
+
+    void subscribe(Observer *obs) override{
+        observers.push_back(obs);
+    }
 private:
     int columns;
     const int rows = 4;
     std::vector<wxTextCtrl *> cells;
     wxGridSizer *gridSizerCells;
+    std::list<Observer *> observers;
     void setupGrid();
 };
 
