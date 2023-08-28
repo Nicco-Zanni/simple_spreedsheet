@@ -8,6 +8,7 @@ include(${wxWidgets_USE_FILE})
 add_executable(simple_spreadsheet main.cpp
         Spreadsheet.cpp
         Spreadsheet.h
-        Observer.h)
+        Observer.h
+        Subject.h)
 
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
