@@ -21,6 +21,10 @@ public:
                          const wxSize &size = wxDefaultSize,
                          long style = wxDEFAULT_FRAME_STYLE, const wxString &name = wxFrameNameStr);
 
+
+
+    ~Spreadsheet() override;
+
     void subscribe(Observer *obs) override{
         observers.push_back(obs);
     }
@@ -29,7 +33,11 @@ public:
         observers.remove(obs);
     }
 
-    ~Spreadsheet() override;
+    void notify(wxCommandEvent & event ) override{
+        for (auto &obs: observers)
+            obs->update();
+    }
+
 private:
     int columns;
     const int rows = 4;

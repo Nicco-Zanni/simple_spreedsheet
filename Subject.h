@@ -14,7 +14,7 @@ public:
 
     virtual void unsubscribe(Observer *obs) = 0;
 
-    virtual void notify() = 0;
+    virtual void notify(wxCommandEvent & event) = 0;
 
 };
 
