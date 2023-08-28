@@ -38,6 +38,8 @@ public:
             obs->update();
     }
 
+    double getCellValueAt(int x, int y) const;
+
 private:
     int columns;
     const int rows = 4;

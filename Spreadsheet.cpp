@@ -54,3 +54,7 @@ Spreadsheet::~Spreadsheet() {
    cells.clear();
    observers.clear();
 }
+
+double Spreadsheet::getCellValueAt(int x, int y) const {
+    return std::stod(cells[x * columns + y]->GetValue().ToStdString());
+}
