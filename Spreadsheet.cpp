@@ -58,7 +58,10 @@ Spreadsheet::~Spreadsheet() {
 }
 
 double Spreadsheet::getCellValueAt(int x, int y) const {
-    return std::stod(cells[x * columns + y]->GetValue().ToStdString());
+    if(cells[x * columns + y]->GetValue() != wxEmptyString)
+        return std::stod(cells[x * columns + y]->GetValue().ToStdString());
+    else
+        return 0;
 }
 
 void Spreadsheet::setResult(double result, int x, int y) {
