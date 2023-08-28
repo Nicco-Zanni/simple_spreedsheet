@@ -14,8 +14,9 @@ Spreadsheet::Spreadsheet(int numOfColumns, wxWindow *parent, wxWindowID id, cons
         columns = numOfColumns;
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     this->SetFont(font);
-
     setupGrid();
+
+    Connect(wxEVT_TEXT, wxTextEventHandler(Spreadsheet::notify));
 }
 
 void Spreadsheet::setupGrid() {
@@ -53,6 +54,7 @@ void Spreadsheet::setupGrid() {
 Spreadsheet::~Spreadsheet() {
    cells.clear();
    observers.clear();
+    Disconnect(wxEVT_TEXT, wxTextEventHandler(Spreadsheet::notify));
 }
 
 double Spreadsheet::getCellValueAt(int x, int y) const {
