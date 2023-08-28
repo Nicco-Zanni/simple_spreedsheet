@@ -30,12 +30,12 @@ void Spreadsheet::setupGrid() {
         for (int j = 0; j < columns - 1; j++) {
             auto cell = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                        wxTE_PROCESS_ENTER | wxTE_CENTRE, wxTextValidator(wxFILTER_NUMERIC));
-            gridSizerCells->Add(cell, 1, wxALL | wxEXPAND, 5);
+            gridSizerCells->Add(cell, 1, wxALL | wxEXPAND, 0);
             cells.push_back(cell);
         }
         auto result = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                      wxTE_READONLY | wxTE_CENTRE);
-        gridSizerCells->Add(result, 1, wxALL | wxEXPAND, 5);
+        gridSizerCells->Add(result, 1, wxALL | wxEXPAND, 0);
         cells.push_back(result);
     }
 
