@@ -11,6 +11,7 @@ add_executable(simple_spreadsheet main.cpp
         Observer.h
         Subject.h
         SumCalculator.cpp
-        SumCalculator.h)
+        SumCalculator.h
+)
 
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})

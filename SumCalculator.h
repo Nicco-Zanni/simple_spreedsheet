@@ -24,7 +24,6 @@ private:
     Spreadsheet *spreadsheet;
     int row;
     int column;
-
 };
 
 

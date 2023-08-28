@@ -14,6 +14,7 @@
 #include "Observer.h"
 #include "Subject.h"
 
+
 class Spreadsheet: public wxFrame, public Subject{
 public:
     explicit Spreadsheet(int numOfColumns, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY,
@@ -33,9 +34,10 @@ public:
         observers.remove(obs);
     }
 
-    void notify(wxCommandEvent & event ) override{
-        for (auto &obs: observers)
+    void notify(wxCommandEvent & event ) override {
+        for (auto obs: observers) {
             obs->update();
+        }
     }
 
     double getCellValueAt(int x, int y) const;
@@ -48,7 +50,9 @@ private:
     std::vector<wxTextCtrl *> cells;
     wxGridSizer *gridSizerCells;
     std::list<Observer *> observers;
+
     void setupGrid();
+
 };
 
 

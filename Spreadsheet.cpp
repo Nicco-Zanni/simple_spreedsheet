@@ -15,8 +15,7 @@ Spreadsheet::Spreadsheet(int numOfColumns, wxWindow *parent, wxWindowID id, cons
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     this->SetFont(font);
     setupGrid();
-
-    Connect(wxEVT_TEXT, wxTextEventHandler(Spreadsheet::notify));
+    Bind(wxEVT_TEXT, &Spreadsheet::notify, this);
 }
 
 void Spreadsheet::setupGrid() {
@@ -33,6 +32,7 @@ void Spreadsheet::setupGrid() {
                                        wxTE_PROCESS_ENTER | wxTE_CENTRE, wxTextValidator(wxFILTER_NUMERIC));
             gridSizerCells->Add(cell, 1, wxALL | wxEXPAND, 0);
             cells.push_back(cell);
+            //cell->Bind(wxEVT_TEXT, &Spreadsheet::notify, this);
         }
         auto result = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                      wxTE_READONLY | wxTE_CENTRE);
@@ -54,7 +54,7 @@ void Spreadsheet::setupGrid() {
 Spreadsheet::~Spreadsheet() {
    cells.clear();
    observers.clear();
-    Disconnect(wxEVT_TEXT, wxTextEventHandler(Spreadsheet::notify));
+   Unbind(wxEVT_TEXT, &Spreadsheet::notify, this);
 }
 
 double Spreadsheet::getCellValueAt(int x, int y) const {
@@ -65,5 +65,5 @@ double Spreadsheet::getCellValueAt(int x, int y) const {
 }
 
 void Spreadsheet::setResult(double result, int x, int y) {
-    cells[x * columns + y]->SetValue(wxString::Format(wxT("%f"), result));
+    cells[x * columns + y]->ChangeValue(wxString::Format(wxT("%f"), result));
 }

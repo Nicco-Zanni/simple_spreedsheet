@@ -10,4 +10,5 @@ void SumCalculator::update() {
             sum += spreadsheet->getCellValueAt(row, i);
     }
     spreadsheet->setResult(sum, row, column);
+
 }
