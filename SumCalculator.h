@@ -13,6 +13,10 @@ public:
         spreadsheet->subscribe(this);
     }
 
+    ~SumCalculator() override {
+        spreadsheet->unsubscribe(this);
+    }
+
     void update() override;
 
 private:
