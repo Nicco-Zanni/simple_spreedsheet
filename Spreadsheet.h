@@ -40,6 +40,8 @@ public:
 
     double getCellValueAt(int x, int y) const;
 
+    void setResult(double result, int x, int y);
+
 private:
     int columns;
     const int rows = 4;

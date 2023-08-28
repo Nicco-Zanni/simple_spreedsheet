@@ -58,3 +58,7 @@ Spreadsheet::~Spreadsheet() {
 double Spreadsheet::getCellValueAt(int x, int y) const {
     return std::stod(cells[x * columns + y]->GetValue().ToStdString());
 }
+
+void Spreadsheet::setResult(double result, int x, int y) {
+    cells[x * columns + y]->SetValue(wxString::Format(wxT("%f"), result));
+}
