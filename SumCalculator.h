@@ -9,7 +9,7 @@
 
 class SumCalculator: public Observer {
 public:
-    explicit SumCalculator(Spreadsheet *s): sum(0), spreadsheet(s) {
+    SumCalculator(Spreadsheet *s, int row, int column): sum(0), spreadsheet(s), row(row), column(column){
         spreadsheet->subscribe(this);
     }
 
@@ -22,6 +22,8 @@ public:
 private:
     double sum;
     Spreadsheet *spreadsheet;
+    int row;
+    int column;
 
 };
 
