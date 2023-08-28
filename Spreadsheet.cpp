@@ -49,3 +49,8 @@ void Spreadsheet::setupGrid() {
     sizer->Add(panel, 1, wxALL | wxEXPAND, 5);
     SetSizerAndFit(sizer);
 }
+
+Spreadsheet::~Spreadsheet() {
+   cells.clear();
+   observers.clear();
+}

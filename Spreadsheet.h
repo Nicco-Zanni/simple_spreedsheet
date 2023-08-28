@@ -28,6 +28,8 @@ public:
     void unsubscribe(Observer *obs) override{
         observers.remove(obs);
     }
+
+    ~Spreadsheet() override;
 private:
     int columns;
     const int rows = 4;
