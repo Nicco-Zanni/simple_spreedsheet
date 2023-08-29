@@ -16,6 +16,8 @@ public:
         spreadsheet->unsubscribe(this);
     }
 
+    void update() override;
+
 private:
     int row, column;
     double mean;

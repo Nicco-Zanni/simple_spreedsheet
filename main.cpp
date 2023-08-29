@@ -8,6 +8,8 @@
 #include "SumCalculator.h"
 #include "MaxCalculator.h"
 #include "MinCalculator.h"
+#include "MeanCalculator.h"
+
 class MyApp: public wxApp
 {
 public:
@@ -21,6 +23,7 @@ bool MyApp::OnInit() {
     SumCalculator *sumCalculator = new SumCalculator(frame, 0, 4);
     MaxCalculator*  max = new MaxCalculator(1, 4 ,frame);
     MinCalculator* min = new MinCalculator(2, 4, frame);
+    MeanCalculator* mean = new MeanCalculator(3, 4, frame);
     frame->Show( true );
     return true;
 }
