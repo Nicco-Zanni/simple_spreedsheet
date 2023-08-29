@@ -20,7 +20,7 @@ wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
     Spreadsheet *frame = new Spreadsheet(5,NULL, wxID_ANY, "Spreadsheet");
-    SumCalculator *sumCalculator = new SumCalculator(frame, 0, 4);
+    SumCalculator *sumCalculator = new SumCalculator(0, 4, frame);
     MaxCalculator*  max = new MaxCalculator(1, 4 ,frame);
     MinCalculator* min = new MinCalculator(2, 4, frame);
     MeanCalculator* mean = new MeanCalculator(3, 4, frame);

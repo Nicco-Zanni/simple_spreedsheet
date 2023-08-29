@@ -9,7 +9,7 @@
 
 class SumCalculator: public Observer {
 public:
-    SumCalculator(Spreadsheet *s, int row, int column): sum(0), spreadsheet(s), row(row), column(column){
+    SumCalculator(int row, int column, Spreadsheet *s): sum(0), row(row), column(column), spreadsheet(s){
         spreadsheet->subscribe(this);
     }
 
@@ -20,10 +20,11 @@ public:
     void update() override;
 
 private:
-    double sum;
-    Spreadsheet *spreadsheet;
     int row;
     int column;
+    double sum;
+    Spreadsheet *spreadsheet;
+
 };
 
 

@@ -52,8 +52,8 @@ private:
     std::vector<wxTextCtrl *> cells;
     //wxGridSizer *gridSizerCells;
     std::list<Observer *> observers;
-
     void setupGrid();
+    bool isLegalCharacter(int x, int y) const;
 };
 
 
