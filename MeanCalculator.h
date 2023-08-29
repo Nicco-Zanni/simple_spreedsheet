@@ -12,6 +12,9 @@ public:
     MeanCalculator(int row, int column, Spreadsheet* s): row(row), column(column), mean(0), spreadsheet(s){
         spreadsheet->subscribe(this);
     }
+    ~MeanCalculator(){
+        spreadsheet->unsubscribe(this);
+    }
 
 private:
     int row, column;
