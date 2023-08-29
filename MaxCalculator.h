@@ -12,6 +12,9 @@ public:
     MaxCalculator(int row, int column, Spreadsheet* s): row(row), column(column), max(0), spreadsheet(s){
         spreadsheet->subscribe(this);
     }
+    ~MaxCalculator(){
+        spreadsheet->unsubscribe(this);
+    }
 private:
     int row;
     int column;
