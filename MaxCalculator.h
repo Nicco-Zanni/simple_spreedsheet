@@ -15,6 +15,8 @@ public:
     ~MaxCalculator(){
         spreadsheet->unsubscribe(this);
     }
+
+    void update() override;
 private:
     int row;
     int column;
