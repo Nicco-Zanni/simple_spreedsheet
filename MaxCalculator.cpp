@@ -7,7 +7,7 @@
 void MaxCalculator::update() {
     max = spreadsheet->getCellValueAt(row, 0);
     for(int i = 1; i < column; i++){
-        if(max < spreadsheet->getCellValueAt(row, i)){
+        if(max < spreadsheet->getCellValueAt(row, i) && !spreadsheet->isEmpty(row, i)){
             max = spreadsheet->getCellValueAt(row, i);
         }
     }

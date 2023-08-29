@@ -54,7 +54,6 @@ private:
     std::list<Observer *> observers;
 
     void setupGrid();
-
 };
 
 
