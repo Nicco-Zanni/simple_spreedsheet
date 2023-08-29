@@ -58,7 +58,7 @@ Spreadsheet::~Spreadsheet() {
 }
 
 double Spreadsheet::getCellValueAt(int x, int y) const {
-    if(cells[x * columns + y]->GetValue() != wxEmptyString)
+    if(!isEmpty(x, y) && cells[x * columns + y]->GetValue() != wxT("-") && cells[x * columns + y]->GetValue() != wxT("+") )
         return std::stod(cells[x * columns + y]->GetValue().ToStdString());
     else
         return 0;
@@ -66,4 +66,10 @@ double Spreadsheet::getCellValueAt(int x, int y) const {
 
 void Spreadsheet::setResult(double result, int x, int y) {
     cells[x * columns + y]->ChangeValue(wxString::Format(wxT("%f"), result));
+}
+
+bool Spreadsheet::isEmpty(int x, int y) const {
+    if(cells[x * columns + y]->GetValue() == wxEmptyString)
+        return true;
+    return false;
 }

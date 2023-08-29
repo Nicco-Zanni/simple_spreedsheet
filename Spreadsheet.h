@@ -44,6 +44,8 @@ public:
 
     void setResult(double result, int x, int y);
 
+    bool isEmpty(int x, int y) const;
+
 private:
     int columns;
     const int rows = 4;
