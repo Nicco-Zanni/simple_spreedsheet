@@ -5,10 +5,14 @@
 #include "MaxCalculator.h"
 
 void MaxCalculator::update() {
-    max = spreadsheet->getCellValueAt(row, 0);
-    for(int i = 1; i < column; i++){
-        if(max < spreadsheet->getCellValueAt(row, i) && !spreadsheet->isEmpty(row, i)){
-            max = spreadsheet->getCellValueAt(row, i);
+    int i = 0;
+    while(spreadsheet->isEmpty(row, i)) {
+        i++;
+    }
+    max = spreadsheet->getCellValueAt(row, i);
+    for(int j = 1; j < column; j++){
+        if(max < spreadsheet->getCellValueAt(row, j) && !spreadsheet->isEmpty(row, j)){
+            max = spreadsheet->getCellValueAt(row, j);
         }
     }
     spreadsheet->setResult(max, row, column);
