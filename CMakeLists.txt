@@ -16,6 +16,8 @@ add_executable(simple_spreadsheet main.cpp
         MaxCalculator.h
         MinCalculator.cpp
         MinCalculator.h
+        MeanCalculator.cpp
+        MeanCalculator.h
 )
 
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})
