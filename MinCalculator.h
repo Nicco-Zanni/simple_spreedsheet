@@ -12,6 +12,10 @@ public:
     MinCalculator(int row, int column, Spreadsheet* s): row(row), column(column), min(0), spreadsheet(s){
         spreadsheet->subscribe(this);
     }
+
+    ~MinCalculator() override{
+        spreadsheet->unsubscribe(this);
+    }
 private:
     int row;
     int column;
