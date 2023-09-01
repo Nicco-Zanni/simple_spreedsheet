@@ -46,12 +46,16 @@ public:
 
     const int getRows() const;
 
+    bool isObserverCell(int x, int y) const;
+
+    void setObserverCell(int x, int y);
+
 private:
     int columns;
     const int rows = 4;
     std::vector<wxTextCtrl *> cells;
-    //wxGridSizer *gridSizerCells;
     std::list<Observer *> observers;
+    std::vector<bool> observerCell;
     void setupGrid();
     bool isLegalCharacter(int x, int y) const;
 };

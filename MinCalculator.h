@@ -10,7 +10,16 @@
 class MinCalculator: public Observer{
 public:
     MinCalculator(int row, int column, Spreadsheet* s): row(row), column(column), min(0), spreadsheet(s){
-        spreadsheet->subscribe(this);
+        if(row >= 0 && row < spreadsheet->getRows() && column >=0 && column < spreadsheet->getColumns()){
+            if(!spreadsheet->isObserverCell(row, column)) {
+                spreadsheet->subscribe(this);
+                spreadsheet->setObserverCell(row, column);
+            } else{
+                std::cout << "Cell already occupied by another observer" << std::endl;
+            }
+        } else{
+            std::cout << "Out of limits" << std::endl;
+        }
     }
 
     ~MinCalculator() override{

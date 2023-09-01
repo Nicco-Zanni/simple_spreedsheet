@@ -14,6 +14,9 @@ Spreadsheet::Spreadsheet(int numOfColumns, wxWindow *parent, wxWindowID id, cons
         columns = numOfColumns;
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     this->SetFont(font);
+    for(int i = 0; i < rows * columns; i++){
+        observerCell.push_back(false);
+    }
     setupGrid();
     Bind(wxEVT_TEXT, &Spreadsheet::notify, this);
 }
@@ -54,6 +57,7 @@ void Spreadsheet::setupGrid() {
 Spreadsheet::~Spreadsheet() {
    cells.clear();
    observers.clear();
+   observerCell.clear();
    Unbind(wxEVT_TEXT, &Spreadsheet::notify, this);
 }
 
@@ -92,4 +96,12 @@ int Spreadsheet::getColumns() const {
 
 const int Spreadsheet::getRows() const {
     return rows;
+}
+
+bool Spreadsheet::isObserverCell(int x, int y) const {
+    return observerCell[x * columns + y];
+}
+
+void Spreadsheet::setObserverCell(int x, int y) {
+    observerCell[x * columns + y] = true;
 }
