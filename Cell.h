@@ -15,10 +15,18 @@ public:
     Cell(int row, int column, wxTextCtrl* Textctrl): row(row), column(column), value(0), formula("none"), textCtrl(Textctrl){
         textCtrl->Bind(wxEVT_TEXT, &Cell::notify, this);
     }
-    ~Cell(){
+    ~Cell() override{
         observers.clear();
         subjects.clear();
         textCtrl->Unbind(wxEVT_TEXT, &Cell::notify, this);
+    }
+
+    void subscribe(Observer* obs) override{
+        observers.push_back(obs);
+    }
+
+    void unsubscribe(Observer* obs) override{
+        observers.remove(obs);
     }
 
 private:
