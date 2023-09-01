@@ -5,6 +5,7 @@
 #ifndef SIMPLE_SPREADSHEET_SUBJECT_H
 #define SIMPLE_SPREADSHEET_SUBJECT_H
 #include "Observer.h"
+#include <wx/wx.h>
 
 class Subject {
 public:

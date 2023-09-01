@@ -29,6 +29,12 @@ public:
         observers.remove(obs);
     }
 
+    void notify(wxCommandEvent &event) override{
+        for(auto obs: observers){
+            obs->update();
+        }
+    }
+
 private:
     int row, column;
     double value;
