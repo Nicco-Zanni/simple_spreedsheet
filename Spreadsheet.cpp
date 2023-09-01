@@ -79,3 +79,17 @@ bool Spreadsheet::isLegalCharacter(int x, int y) const {
         return true;
     return false;
 }
+
+void Spreadsheet::notify(wxCommandEvent &event){
+    for(auto obs : observers){
+        obs->update();
+    }
+}
+
+int Spreadsheet::getColumns() const {
+    return columns;
+}
+
+const int Spreadsheet::getRows() const {
+    return rows;
+}

@@ -34,17 +34,17 @@ public:
         observers.remove(obs);
     }
 
-    void notify(wxCommandEvent & event ) override {
-        for (auto obs: observers) {
-            obs->update();
-        }
-    }
+    void notify(wxCommandEvent & event ) override;
 
     double getCellValueAt(int x, int y) const;
 
     void setResult(double result, int x, int y);
 
     bool isEmpty(int x, int y) const;
+
+    int getColumns() const;
+
+    const int getRows() const;
 
 private:
     int columns;

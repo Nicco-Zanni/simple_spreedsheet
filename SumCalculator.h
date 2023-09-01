@@ -18,7 +18,6 @@ public:
     }
 
     void update() override;
-
 private:
     int row;
     int column;
