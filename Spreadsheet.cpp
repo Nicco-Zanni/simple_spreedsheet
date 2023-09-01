@@ -26,9 +26,13 @@ void Spreadsheet::setupGrid() {
     auto panel = new wxScrolled<wxPanel>(this, wxID_ANY);
     auto panelSizer = new wxBoxSizer(wxVERTICAL);
 
-    auto gridSizerCells = new wxGridSizer(rows, columns, 0, 0);
+    auto gridSizerCells = new wxGridSizer(rows + 1, columns, 0, 0);
     panel->SetScrollRate(5, 0);
 
+    for(int k = 0; k < columns - 1; k++){
+        gridSizerCells->Add(new wxStaticText(this, wxID_ANY, wxEmptyString), 1,wxALL | wxEXPAND, 0);
+    }
+    gridSizerCells->Add(new wxStaticText(this, wxID_ANY, wxT("Results"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL), 1,wxALL | wxEXPAND, 0);
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns - 1; j++) {
             auto cell = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
