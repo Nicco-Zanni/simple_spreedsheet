@@ -52,6 +52,9 @@ void Spreadsheet::setupGrid() {
 }
 
 Spreadsheet::~Spreadsheet() {
+    for(auto cell : cells){
+        delete cell;
+    }
    cells.clear();
 }
 
