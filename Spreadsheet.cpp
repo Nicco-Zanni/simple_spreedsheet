@@ -5,7 +5,7 @@
 #include "Spreadsheet.h"
 #include <wx/wx.h>
 
-Spreadsheet::Spreadsheet(int numOfRows, int numOfColumns, int rows, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
+Spreadsheet::Spreadsheet(int numOfRows, int numOfColumns, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                          const wxSize &size, long style, const wxString &name) : wxFrame(parent, id, title, pos, size,
                                                                                          style, name){
     if(numOfRows < 1){
@@ -32,17 +32,12 @@ void Spreadsheet::setupGrid() {
     panel->SetScrollRate(5, 0);
 
     for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < columns - 1; j++) {
-            auto cell = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
+        for (int j = 0; j < columns; j++) {
+            auto textCtrl = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                        wxTE_PROCESS_ENTER | wxTE_CENTRE, wxTextValidator(wxFILTER_NUMERIC));
-            gridSizerCells->Add(cell, 1, wxALL | wxEXPAND, 0);
-            cells.push_back(cell);
-            //cell->Bind(wxEVT_TEXT, &Spreadsheet::notify, this);
+            gridSizerCells->Add(textCtrl, 1, wxALL | wxEXPAND, 0);
+            cells.push_back(new Cell(i, j, textCtrl ));
         }
-        auto result = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
-                                     wxTE_READONLY | wxTE_CENTRE);
-        gridSizerCells->Add(result, 1, wxALL | wxEXPAND, 0);
-        cells.push_back(result);
     }
 
     auto top_panel = new wxPanel(this, wxID_ANY);
