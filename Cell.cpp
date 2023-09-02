@@ -10,3 +10,7 @@ bool Cell::isLegalCharacter() const {
     }
     return false;
 }
+
+void Cell::setFormula(const std::string &formula) {
+    Cell::formula = formula;
+}

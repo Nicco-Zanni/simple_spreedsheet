@@ -45,6 +45,8 @@ public:
         }
     }
 
+    void setFormula(const std::string &formula);
+
 private:
     int row, column;
     double value;
