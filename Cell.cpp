@@ -24,6 +24,7 @@ bool Cell::isEmpty() const {
 
 void Cell::update() {
     compute();
+    setResult();
 }
 
 void Cell::compute() {
@@ -112,4 +113,8 @@ void Cell::computeMean() {
     } else{
         value = 0;
     }
+}
+
+void Cell::setResult() {
+    textCtrl->ChangeValue(wxString::Format(wxT("%f"), value));
 }

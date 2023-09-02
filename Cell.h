@@ -49,6 +49,8 @@ public:
 
     void update() override;
 
+    void setResult();
+
 private:
     int row, column;
     double value;
