@@ -40,12 +40,14 @@ public:
     }
 
     void setValue() {
-        if(isLegalCharacter()) {
+        if(!isEmpty() && isLegalCharacter()) {
             value = std::stod(textCtrl->GetValue().ToStdString());
         }
     }
 
     void setFormula(const std::string &formula);
+
+    void update() override;
 
 private:
     int row, column;
@@ -55,8 +57,12 @@ private:
     std::list<Observer*> observers;
     std::list<Cell*> subjects;
     bool isLegalCharacter() const;
-
-
+    void compute();
+    void computeSum();
+    void computeMax();
+    void computeMin();
+    void computeMean();
+    bool isEmpty() const;
 };
 
 
