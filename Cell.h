@@ -30,6 +30,7 @@ public:
     }
 
     void notify(wxCommandEvent &event) override{
+        setValue();//provare se si può ritornare un booleano per non mandare update
         for(auto obs: observers){
             obs->update();
         }
