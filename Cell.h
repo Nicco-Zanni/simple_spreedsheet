@@ -35,6 +35,16 @@ public:
         }
     }
 
+    double getValue() const {
+        return value;
+    }
+
+    void setValue() {
+        if(isLegalCharacter()) {
+            value = std::stod(textCtrl->GetValue().ToStdString());
+        }
+    }
+
 private:
     int row, column;
     double value;
@@ -42,6 +52,7 @@ private:
     wxTextCtrl* textCtrl;
     std::list<Observer*> observers;
     std::list<Cell*> subjects;
+    bool isLegalCharacter() const;
 
 
 };
