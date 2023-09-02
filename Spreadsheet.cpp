@@ -5,17 +5,22 @@
 #include "Spreadsheet.h"
 #include <wx/wx.h>
 
-Spreadsheet::Spreadsheet(int numOfColumns, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
+Spreadsheet::Spreadsheet(int numOfRows, int numOfColumns, int rows, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
                          const wxSize &size, long style, const wxString &name) : wxFrame(parent, id, title, pos, size,
                                                                                          style, name){
-    if(numOfColumns < 2)
-        columns = 1;
-    else
+    if(numOfRows < 1){
+        rows = 1;
+    }else{
+        rows = numOfRows;
+    }
+    if(numOfColumns < 2){
+        columns = 2;
+    }else{
         columns = numOfColumns;
+    }
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     this->SetFont(font);
     setupGrid();
-    Bind(wxEVT_TEXT, &Spreadsheet::notify, this);
 }
 
 void Spreadsheet::setupGrid() {
@@ -53,29 +58,6 @@ void Spreadsheet::setupGrid() {
 
 Spreadsheet::~Spreadsheet() {
    cells.clear();
-   observers.clear();
-   Unbind(wxEVT_TEXT, &Spreadsheet::notify, this);
 }
 
-double Spreadsheet::getCellValueAt(int x, int y) const {
-    if(!isEmpty(x, y) && isLegalCharacter(x, y))
-        return std::stod(cells[x * columns + y]->GetValue().ToStdString());
-    else
-        return 0;
-}
 
-void Spreadsheet::setResult(double result, int x, int y) {
-    cells[x * columns + y]->ChangeValue(wxString::Format(wxT("%f"), result));
-}
-
-bool Spreadsheet::isEmpty(int x, int y) const {
-    if(cells[x * columns + y]->GetValue() == wxEmptyString)
-        return true;
-    return false;
-}
-
-bool Spreadsheet::isLegalCharacter(int x, int y) const {
-    if(cells[x * columns + y]->GetValue() != wxT("-") && cells[x * columns + y]->GetValue() != wxT("+") && cells[x * columns + y]->GetValue() != wxT("e"))
-        return true;
-    return false;
-}
