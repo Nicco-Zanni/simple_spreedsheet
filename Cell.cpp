@@ -118,3 +118,7 @@ void Cell::computeMean() {
 void Cell::setResult() {
     textCtrl->ChangeValue(wxString::Format(wxT("%f"), value));
 }
+
+const std::string &Cell::getFormula() const {
+    return formula;
+}

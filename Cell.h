@@ -52,6 +52,8 @@ public:
 
     void setResult();
 
+    const std::string &getFormula() const;
+
 private:
     int row, column;
     double value;
