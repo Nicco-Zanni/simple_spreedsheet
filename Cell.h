@@ -56,6 +56,9 @@ public:
 
     void removeSubjects();
 
+    void addSubject(Cell* subject);
+
+    void triggerNotify();
 private:
     int row, column;
     double value;

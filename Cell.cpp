@@ -129,3 +129,11 @@ void Cell::removeSubjects() {
     }
     subjects.clear();
 }
+
+void Cell::addSubject(Cell *subject) {
+    subjects.push_back(subject);
+}
+
+void Cell::triggerNotify() {
+    textCtrl->SetValue(wxString::Format(wxT("%f"), value));
+}
