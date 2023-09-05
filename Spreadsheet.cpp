@@ -87,3 +87,15 @@ void Spreadsheet::removeObserver(int row, int column) {
         cells[row * columns + column]->setFormula("none");
     }
 }
+
+void Spreadsheet::setObserverVertical(int row, int column, const std::string &formula) {
+    if(areLegalCellCoordinates(row, column)){
+        removeObserver(row, column);
+        cells[row * columns + column]->setFormula(formula);
+        for(int i = 0; i < row; i++){
+            cells[i * columns + column]->subscribe(cells[row * columns + column]);
+            cells[row * columns + column]->addSubject(cells[i * columns + column]);
+        }
+        cells[row * columns]->triggerNotify();
+    }
+}
