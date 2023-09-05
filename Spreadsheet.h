@@ -20,11 +20,13 @@ public:
 
     ~Spreadsheet() override;
 
+
 private:
     int rows, columns;
     std::vector<Cell*> cells;
     void setupGrid();
     void setGridSize(int numOfRows, int numOfColumns);
+    bool areLegalCellCoordinates(int x, int y) const;
 };
 
 

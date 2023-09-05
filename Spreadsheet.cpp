@@ -62,3 +62,10 @@ void Spreadsheet::setGridSize(int numOfRows, int numOfColumns){
     }
 }
 
+bool Spreadsheet::areLegalCellCoordinates(int x, int y) const {
+    if(x < 0 || x > rows || y < 0 || y > columns){
+        return false;
+    }
+    return true;
+}
+
