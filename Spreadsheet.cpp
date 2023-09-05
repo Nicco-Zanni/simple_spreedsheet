@@ -6,18 +6,9 @@
 #include <wx/wx.h>
 
 Spreadsheet::Spreadsheet(int numOfRows, int numOfColumns, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
-                         const wxSize &size, long style, const wxString &name) : wxFrame(parent, id, title, pos, size,
+                         const wxSize &size, long style, const wxString &name) : rows(numOfRows), columns(numOfColumns), wxFrame(parent, id, title, pos, size,
                                                                                          style, name){
-    if(numOfRows < 1){
-        rows = 1;
-    }else{
-        rows = numOfRows;
-    }
-    if(numOfColumns < 2){
-        columns = 2;
-    }else{
-        columns = numOfColumns;
-    }
+    setGridSize(numOfRows, numOfColumns);
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     this->SetFont(font);
     setupGrid();
@@ -58,4 +49,16 @@ Spreadsheet::~Spreadsheet() {
    cells.clear();
 }
 
+void Spreadsheet::setGridSize(int numOfRows, int numOfColumns){
+    if(numOfRows < 1){
+        rows = 1;
+    }else{
+        rows = numOfRows;
+    }
+    if(numOfColumns < 2){
+        columns = 2;
+    }else{
+        columns = numOfColumns;
+    }
+}
 
