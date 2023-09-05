@@ -6,9 +6,9 @@
 
 bool Cell::isLegalCharacter() const {
     if(textCtrl->GetValue() != wxT("-") && textCtrl->GetValue() != wxT("+")){
-        return false;
+        return true;
     }
-    return true;
+    return false;
 }
 
 void Cell::setFormula(const std::string &formula) {
@@ -25,6 +25,7 @@ bool Cell::isEmpty() const {
 void Cell::update() {
     compute();
     setResult();
+
 }
 
 void Cell::compute() {
@@ -66,8 +67,6 @@ void Cell::computeMax() {
             ptr++;
         }
         value = max;
-    } else{
-        value = 0;
     }
 }
 
