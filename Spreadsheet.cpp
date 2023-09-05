@@ -77,7 +77,6 @@ void Spreadsheet::setObserverHorizontal(int row, int column, const std::string &
             cells[row* columns + i]->subscribe(cells[row * columns + column]);
             cells[row * columns + column]->addSubject(cells[row* columns + i]);
         }
-        cells[row * columns]->triggerNotify();
     }
 }
 
@@ -96,7 +95,6 @@ void Spreadsheet::setObserverVertical(int row, int column, const std::string &fo
             cells[i * columns + column]->subscribe(cells[row * columns + column]);
             cells[row * columns + column]->addSubject(cells[i * columns + column]);
         }
-        cells[row * columns]->triggerNotify();
     }
 }
 
