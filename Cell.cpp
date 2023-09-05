@@ -122,3 +122,10 @@ void Cell::setResult() {
 const std::string &Cell::getFormula() const {
     return formula;
 }
+
+void Cell::removeSubjects() {
+    for(auto subject : subjects){
+        subject->unsubscribe(this);
+    }
+    subjects.clear();
+}

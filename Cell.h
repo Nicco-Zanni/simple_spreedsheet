@@ -54,6 +54,8 @@ public:
 
     const std::string &getFormula() const;
 
+    void removeSubjects();
+
 private:
     int row, column;
     double value;
