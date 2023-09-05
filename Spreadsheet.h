@@ -20,6 +20,9 @@ public:
 
     ~Spreadsheet() override;
 
+    void setObserverHorizontal(int row, int column, const std::string& formula);
+
+    void removeObserver(int row, int column);
 
 private:
     int rows, columns;

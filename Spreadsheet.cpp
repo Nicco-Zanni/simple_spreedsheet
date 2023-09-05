@@ -69,3 +69,19 @@ bool Spreadsheet::areLegalCellCoordinates(int x, int y) const {
     return true;
 }
 
+void Spreadsheet::setObserverHorizontal(int row, int column, const std::string &formula) {
+    if(areLegalCellCoordinates(row, column)){
+        removeObserver(row, column);
+        cells[row * columns + column]->setFormula(formula);
+        for(int i = 0; i < column; i++){
+            cells[row* columns + i]->subscribe(cells[row * columns + column]);
+        }
+    }
+}
+
+void Spreadsheet::removeObserver(int row, int column) {
+    if(areLegalCellCoordinates(row, column)){
+        cells[row * columns + column]->removeSubjects();
+        cells[row * columns + column]->setFormula("none");
+    }
+}
