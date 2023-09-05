@@ -26,6 +26,8 @@ public:
 
     void setObserverVertical(int row, int column, const std::string& formula);
 
+    void changeFormula(int row, int column, const std::string& formula);
+
 private:
     int rows, columns;
     std::vector<Cell*> cells;

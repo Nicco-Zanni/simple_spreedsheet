@@ -99,3 +99,9 @@ void Spreadsheet::setObserverVertical(int row, int column, const std::string &fo
         cells[row * columns]->triggerNotify();
     }
 }
+
+void Spreadsheet::changeFormula(int row, int column, const std::string &formula) {
+    if(areLegalCellCoordinates(row, column)){
+        cells[row * columns + column]->setFormula(formula);
+    }
+}
