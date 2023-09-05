@@ -10,14 +10,6 @@ add_executable(simple_spreadsheet main.cpp
         Spreadsheet.h
         Observer.h
         Subject.h
-        SumCalculator.cpp
-        SumCalculator.h
-        MaxCalculator.cpp
-        MaxCalculator.h
-        MinCalculator.cpp
-        MinCalculator.h
-        MeanCalculator.cpp
-        MeanCalculator.h
         Cell.cpp
         Cell.h
 )
