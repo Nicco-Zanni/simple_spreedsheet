@@ -6,58 +6,34 @@
 #define SIMPLE_SPREADSHEET_SPREADSHEET_H
 
 #include <wx/frame.h>
-#include <wx/stattext.h>
-#include <wx/textctrl.h>
-#include <wx/sizer.h>
 #include <vector>
-#include <list>
-#include "Observer.h"
-#include "Subject.h"
+#include "Cell.h"
 
 
-class Spreadsheet: public wxFrame, public Subject{
+class Spreadsheet: public wxFrame{
 public:
-    explicit Spreadsheet(int numOfColumns, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY,
+    explicit Spreadsheet(int numOfRows, int numOfColumns, wxWindow *parent = nullptr, wxWindowID id = wxID_ANY,
                          const wxString &title = wxEmptyString, const wxPoint &pos = wxDefaultPosition,
                          const wxSize &size = wxDefaultSize,
                          long style = wxDEFAULT_FRAME_STYLE, const wxString &name = wxFrameNameStr);
 
 
-
     ~Spreadsheet() override;
 
-    void subscribe(Observer *obs) override{
-        observers.push_back(obs);
-    }
+    void setObserverHorizontal(int row, int column, const std::string& formula);
 
-    void unsubscribe(Observer *obs) override{
-        observers.remove(obs);
-    }
+    void removeObserver(int row, int column);
 
-    void notify(wxCommandEvent & event ) override;
+    void setObserverVertical(int row, int column, const std::string& formula);
 
-    double getCellValueAt(int x, int y) const;
-
-    void setResult(double result, int x, int y);
-
-    bool isEmpty(int x, int y) const;
-
-    int getColumns() const;
-
-    const int getRows() const;
-
-    bool isObserverCell(int x, int y) const;
-
-    void setObserverCell(int x, int y);
+    void changeFormula(int row, int column, const std::string& formula);
 
 private:
-    int columns;
-    const int rows = 4;
-    std::vector<wxTextCtrl *> cells;
-    std::list<Observer *> observers;
-    std::vector<bool> observerCell;
+    int rows, columns;
+    std::vector<Cell*> cells;
     void setupGrid();
-    bool isLegalCharacter(int x, int y) const;
+    void setGridSize(int numOfRows, int numOfColumns);
+    bool areLegalCellCoordinates(int x, int y) const;
 };
 
 
