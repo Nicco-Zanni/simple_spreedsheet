@@ -20,6 +20,7 @@ bool MyApp::OnInit() {
     frame->setObserverHorizontal(1,4, "max");
     frame->setObserverHorizontal(2,4, "min");
     frame->setObserverHorizontal(3,4, "mean");
+    frame->setObserverVertical(1, 3, "sum");
     frame->Show( true );
     return true;
 }

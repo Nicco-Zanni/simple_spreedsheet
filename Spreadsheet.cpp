@@ -27,7 +27,7 @@ void Spreadsheet::setupGrid() {
             auto textCtrl = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
                                        wxTE_PROCESS_ENTER | wxTE_CENTRE, wxTextValidator(wxFILTER_NUMERIC));
             gridSizerCells->Add(textCtrl, 1, wxALL | wxEXPAND, 0);
-            cells.push_back(new Cell(i, j, textCtrl ));
+            cells.push_back(new Cell(textCtrl));
         }
     }
 
