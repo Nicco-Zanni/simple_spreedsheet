@@ -12,7 +12,7 @@
 
 class Cell: public Observer, public Subject{
 public:
-    Cell(int row, int column, wxTextCtrl* Textctrl): row(row), column(column), value(0), formula("none"), textCtrl(Textctrl){
+    Cell(wxTextCtrl* Textctrl): value(0), formula("none"), textCtrl(Textctrl){
         textCtrl->Bind(wxEVT_TEXT, &Cell::notify, this);
     }
     ~Cell() override{
@@ -30,7 +30,7 @@ public:
     }
 
     void notify(wxCommandEvent &event) override{
-        setValue();//provare se si può ritornare un booleano per non mandare update
+        setValue();
         for(auto obs: observers){
             obs->update();
         }
@@ -52,14 +52,11 @@ public:
 
     void setResult();
 
-    const std::string &getFormula() const;
-
     void removeSubjects();
 
     void addSubject(Cell* subject);
 
 private:
-    int row, column;
     double value;
     std::string formula;
     wxTextCtrl* textCtrl;

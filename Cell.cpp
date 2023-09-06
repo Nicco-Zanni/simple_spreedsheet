@@ -118,10 +118,6 @@ void Cell::setResult() {
     textCtrl->ChangeValue(wxString::Format(wxT("%f"), value));
 }
 
-const std::string &Cell::getFormula() const {
-    return formula;
-}
-
 void Cell::removeSubjects() {
     for(auto subject : subjects){
         subject->unsubscribe(this);
@@ -132,4 +128,3 @@ void Cell::removeSubjects() {
 void Cell::addSubject(Cell *subject) {
     subjects.push_back(subject);
 }
-
