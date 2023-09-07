@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include "../Spreadsheet.h"
 
-TEST(SpreadsheetSuite, testSpreadsheetConstructor){
+TEST(SpreadsheetSuite, SpreadsheetConstructorTest){
     auto ptr = new Spreadsheet(-1, 2,NULL, wxID_ANY, "Spreadsheet");
     EXPECT_EQ(ptr->getRows(), 1);
     EXPECT_EQ(ptr->getColumns(), 2);
@@ -13,4 +13,14 @@ TEST(SpreadsheetSuite, testSpreadsheetConstructor){
     EXPECT_EQ(ptr2->getRows(), 1);
     EXPECT_EQ(ptr2->getColumns(), 2);
     EXPECT_EQ(ptr2->getCells().size(), 2);
+}
+
+TEST(SpreadsheetSuite, setObserveHorizontalTest){
+    auto ptr = new Spreadsheet(1, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->setObserverHorizontal(0, 4, "sum");
+    for(int i = 0; i < 4; i++){
+        EXPECT_EQ(ptr->getCells()[i]->getObservers().size(), 1);
+    }
+    EXPECT_EQ(ptr->getCells()[4]->getSubjects().size(), 4);
+    EXPECT_EQ(ptr->getCells()[4]->getFormula(), "sum");
 }
