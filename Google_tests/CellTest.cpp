@@ -198,3 +198,23 @@ TEST(CellSuite, updateMeanTest){
     ptr->update();
     EXPECT_FLOAT_EQ(ptr->getValue(), -5.5);
 }
+
+TEST(CellSuite, updateNoneTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto text2 = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto text3 = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto ptr = new Cell(text);
+    auto ptr2 = new Cell(text2);
+    auto ptr3 = new Cell(text3);
+    ptr2->subscribe(ptr);
+    ptr3->subscribe(ptr);
+    ptr->addSubject(ptr2);
+    ptr->addSubject(ptr3);
+    ptr->setFormula("ienviai");
+    text2->ChangeValue("3");
+    ptr2->setValue();
+    text3->ChangeValue("4");
+    ptr3->setValue();
+    ptr->update();
+    EXPECT_FLOAT_EQ(ptr->getValue(), 0);
+}
