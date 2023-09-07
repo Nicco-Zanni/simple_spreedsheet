@@ -15,3 +15,13 @@ TEST(CellSuite, CellConstructorTest){
     EXPECT_EQ(ptr->getObservers().size(), 0);
     EXPECT_EQ(ptr->getTextCtrl(), text);
 }
+
+TEST(CellSuite, isLegalCharacterTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "-");
+    auto ptr = new Cell(text);
+    EXPECT_FALSE(ptr->isLegalCharacter());
+    text->ChangeValue("+");
+    EXPECT_FALSE(ptr->isLegalCharacter());
+    text->ChangeValue("0");
+    EXPECT_TRUE(ptr->isLegalCharacter());
+}
