@@ -25,3 +25,11 @@ TEST(CellSuite, isLegalCharacterTest){
     text->ChangeValue("0");
     EXPECT_TRUE(ptr->isLegalCharacter());
 }
+
+TEST(CellSuite, isEmptyTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, wxEmptyString);
+    auto ptr = new Cell(text);
+    EXPECT_TRUE(ptr->isEmpty());
+    text->ChangeValue("0");
+    EXPECT_FALSE(ptr->isEmpty());
+}
