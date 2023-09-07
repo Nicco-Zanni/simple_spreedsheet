@@ -56,6 +56,12 @@ public:
 
     void addSubject(Cell* subject);
 
+    const std::string &getFormula() const;
+
+    const std::list<Observer *> &getObservers() const;
+
+    const std::list<Cell *> &getSubjects() const;
+
 private:
     double value;
     std::string formula;

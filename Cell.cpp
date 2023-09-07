@@ -128,3 +128,15 @@ void Cell::removeSubjects() {
 void Cell::addSubject(Cell *subject) {
     subjects.push_back(subject);
 }
+
+const std::string &Cell::getFormula() const {
+    return formula;
+}
+
+const std::list<Observer *> &Cell::getObservers() const {
+    return observers;
+}
+
+const std::list<Cell *> &Cell::getSubjects() const {
+    return subjects;
+}
