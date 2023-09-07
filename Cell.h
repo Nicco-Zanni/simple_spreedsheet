@@ -66,6 +66,9 @@ public:
 
     wxTextCtrl *getTextCtrl() const;
 
+    void changeValue(double v){
+        value = v;
+    }
 private:
     double value;
     std::string formula;
