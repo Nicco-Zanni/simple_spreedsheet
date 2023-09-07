@@ -56,3 +56,15 @@ TEST(CellSuite, unsubscribeTest){
     ptr->unsubscribe(ptr3);
     EXPECT_EQ(ptr->getObservers().size(), 0);
 }
+
+TEST(CellSuite, addAndRemoveSubjectsTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto ptr = new Cell(text);
+    auto ptr2 = new Cell(text);
+    auto ptr3 = new Cell(text);
+    ptr->addSubject(ptr2);
+    ptr->addSubject(ptr3);
+    EXPECT_EQ(ptr->getSubjects().size(), 2);
+    ptr->removeSubjects();
+    EXPECT_EQ(ptr->getSubjects().size(), 0);
+}
