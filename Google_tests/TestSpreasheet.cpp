@@ -15,6 +15,15 @@ TEST(SpreadsheetSuite, SpreadsheetConstructorTest){
     EXPECT_EQ(ptr2->getCells().size(), 2);
 }
 
+TEST(SpreadsheetSuite, areLegalCellCoordinatesTest){
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    EXPECT_TRUE(ptr->areLegalCellCoordinates(2,3));
+    EXPECT_TRUE(ptr->areLegalCellCoordinates(0,0));
+    EXPECT_TRUE(ptr->areLegalCellCoordinates(4,4));
+    EXPECT_FALSE(ptr->areLegalCellCoordinates(-2,-3));
+    EXPECT_FALSE(ptr->areLegalCellCoordinates(10,20));
+}
+
 TEST(SpreadsheetSuite, setObserveHorizontalTest){
     auto ptr = new Spreadsheet(1, 5,NULL, wxID_ANY, "Spreadsheet");
     ptr->setObserverHorizontal(0, 4, "sum");
