@@ -140,3 +140,7 @@ const std::list<Observer *> &Cell::getObservers() const {
 const std::list<Cell *> &Cell::getSubjects() const {
     return subjects;
 }
+
+wxTextCtrl *Cell::getTextCtrl() const {
+    return textCtrl;
+}

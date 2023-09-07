@@ -61,6 +61,10 @@ public:
     const std::list<Observer *> &getObservers() const;
 
     const std::list<Cell *> &getSubjects() const;
+    bool isLegalCharacter() const;
+    bool isEmpty() const;
+
+    wxTextCtrl *getTextCtrl() const;
 
 private:
     double value;
@@ -68,13 +72,12 @@ private:
     wxTextCtrl* textCtrl;
     std::list<Observer*> observers;
     std::list<Cell*> subjects;
-    bool isLegalCharacter() const;
     void compute();
     void computeSum();
     void computeMax();
     void computeMin();
     void computeMean();
-    bool isEmpty() const;
+
 };
 
 
