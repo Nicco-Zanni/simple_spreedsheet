@@ -34,6 +34,8 @@ public:
 
     int getColumns() const;
 
+    const std::vector<Cell *> &getCells() const;
+
 private:
     int rows, columns;
     std::vector<Cell*> cells;

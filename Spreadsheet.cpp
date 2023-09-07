@@ -113,3 +113,7 @@ int Spreadsheet::getColumns() const {
     return columns;
 }
 
+const std::vector<Cell *> &Spreadsheet::getCells() const {
+    return cells;
+}
+
