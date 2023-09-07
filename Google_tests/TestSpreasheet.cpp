@@ -34,3 +34,14 @@ TEST(SpreadsheetSuite, setObserveVerticalTest){
     EXPECT_EQ(ptr->getCells()[15]->getSubjects().size(), 4);
     EXPECT_EQ(ptr->getCells()[15]->getFormula(), "sum");
 }
+
+TEST(SpreadsheetSuite, removeObserverTest){
+    auto ptr = new Spreadsheet(1, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->setObserverHorizontal(0, 4, "sum");
+    ptr->removeObserver(0, 4);
+    for(int i = 0; i < 4; i++){
+        EXPECT_EQ(ptr->getCells()[i]->getObservers().size(), 0);
+    }
+    EXPECT_EQ(ptr->getCells()[4]->getSubjects().size(), 0);
+    EXPECT_EQ(ptr->getCells()[4]->getFormula(), "none");
+}
