@@ -104,3 +104,12 @@ void Spreadsheet::changeFormula(int row, int column, const std::string &formula)
         cells[row * columns + column]->setFormula(formula);
     }
 }
+
+int Spreadsheet::getRows() const {
+    return rows;
+}
+
+int Spreadsheet::getColumns() const {
+    return columns;
+}
+

@@ -28,12 +28,17 @@ public:
 
     void changeFormula(int row, int column, const std::string& formula);
 
+    bool areLegalCellCoordinates(int x, int y) const;
+
+    int getRows() const;
+
+    int getColumns() const;
+
 private:
     int rows, columns;
     std::vector<Cell*> cells;
     void setupGrid();
     void setGridSize(int numOfRows, int numOfColumns);
-    bool areLegalCellCoordinates(int x, int y) const;
 };
 
 

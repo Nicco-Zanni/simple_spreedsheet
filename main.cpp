@@ -5,17 +5,17 @@
 #endif
 
 #include "Spreadsheet.h"
-
 class MyApp: public wxApp
 {
 public:
     virtual bool OnInit();
+private:
+    Spreadsheet* frame;
 };
-
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
-    Spreadsheet *frame = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    frame = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
     frame->setObserverHorizontal(0,4, "sum");
     frame->setObserverHorizontal(1,4, "max");
     frame->setObserverHorizontal(2,4, "min");
