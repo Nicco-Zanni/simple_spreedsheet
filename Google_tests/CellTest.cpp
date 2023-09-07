@@ -218,3 +218,13 @@ TEST(CellSuite, updateNoneTest){
     ptr->update();
     EXPECT_FLOAT_EQ(ptr->getValue(), 0);
 }
+
+TEST(CellSuite, setResultTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto ptr = new Cell(text);
+    ptr->setResult();
+    EXPECT_EQ(text->GetValue(), "0");
+    ptr->changeValue(3);
+    ptr->setResult();
+    EXPECT_EQ(text->GetValue(), "3");
+}
