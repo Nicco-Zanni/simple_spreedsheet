@@ -68,3 +68,10 @@ TEST(CellSuite, addAndRemoveSubjectsTest){
     ptr->removeSubjects();
     EXPECT_EQ(ptr->getSubjects().size(), 0);
 }
+
+TEST(CellSuite, SetValue){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "3");
+    auto ptr = new Cell(text);
+    ptr->setValue();
+    EXPECT_FLOAT_EQ(ptr->getValue(), 3);
+}
