@@ -44,3 +44,15 @@ TEST(CellSuite, subscribeTest){
     EXPECT_EQ(ptr->getObservers().size(), 2);
     EXPECT_EQ(ptr->getObservers().front(), ptr2);
 }
+
+TEST(CellSuite, unsubscribeTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto ptr = new Cell(text);
+    auto ptr2 = new Cell(text);
+    auto ptr3 = new Cell(text);
+    ptr->subscribe(ptr2);
+    ptr->subscribe(ptr3);
+    ptr->unsubscribe(ptr2);
+    ptr->unsubscribe(ptr3);
+    EXPECT_EQ(ptr->getObservers().size(), 0);
+}
