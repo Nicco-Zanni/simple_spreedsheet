@@ -75,3 +75,18 @@ TEST(CellSuite, SetValue){
     ptr->setValue();
     EXPECT_FLOAT_EQ(ptr->getValue(), 3);
 }
+
+TEST(CellSuite, notifyTest){
+    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto text2 = new wxTextCtrl(NULL, wxID_ANY, "0");
+    auto ptr = new Cell(text);
+    auto ptr2 = new Cell(text);
+    auto ptr3 = new Cell(text2);
+    ptr2->subscribe(ptr);
+    ptr3->subscribe(ptr);
+    ptr->addSubject(ptr2);
+    ptr->addSubject(ptr3);
+    text->SetValue("3");
+    EXPECT_FLOAT_EQ(ptr2->getValue(), 3);
+    EXPECT_FLOAT_EQ(ptr->getValue(), 0);
+}
