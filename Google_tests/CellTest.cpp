@@ -17,11 +17,11 @@ TEST(CellSuite, CellConstructorTest){
 
 TEST(CellSuite, isLegalCharacterTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->getCells()[8]->getTextCtrl()->ChangeValue("-");
+    ptr->getCells()[8]->getTextCtrl()->SetValue("-");
     EXPECT_FALSE(ptr->getCells()[8]->isLegalCharacter());
-    ptr->getCells()[8]->getTextCtrl()->ChangeValue("-");
+    ptr->getCells()[8]->getTextCtrl()->SetValue("+");
     EXPECT_FALSE(ptr->getCells()[8]->isLegalCharacter());
-    ptr->getCells()[8]->getTextCtrl()->ChangeValue("5");
+    ptr->getCells()[8]->getTextCtrl()->SetValue("5");
     EXPECT_TRUE(ptr->getCells()[8]->isLegalCharacter());
 }
 
