@@ -108,11 +108,8 @@ TEST(CellSuite, updateNoneTest){
 }
 
 TEST(CellSuite, setResultTest){
-    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
-    auto ptr = new Cell(text);
-    ptr->setResult();
-    EXPECT_EQ(text->GetValue(), "0");
-    ptr->changeValue(3);
-    ptr->setResult();
-    EXPECT_EQ(text->GetValue(), "3");
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->getCells()[7]->changeValue(5);
+    ptr->getCells()[7]->setResult();
+    EXPECT_EQ(ptr->getCells()[7]->getTextCtrl()->GetValue(), wxT("5.000000"));
 }
