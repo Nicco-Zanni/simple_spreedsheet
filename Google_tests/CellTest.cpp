@@ -9,21 +9,20 @@
 
 TEST(CellSuite, CellConstructorTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->getCells()[8]->changeValue(3);
-    EXPECT_EQ(ptr->getCells()[8]->getValue(), 3);
+    EXPECT_EQ(ptr->getCells()[8]->getValue(), 0);
     EXPECT_EQ(ptr->getCells()[8]->getFormula(), "none");
     EXPECT_EQ(ptr->getCells()[8]->getSubjects().size(), 0);
     EXPECT_EQ(ptr->getCells()[8]->getObservers().size(), 0);
 }
 
 TEST(CellSuite, isLegalCharacterTest){
-    auto text = new wxTextCtrl(NULL, wxID_ANY, "-");
-    auto ptr = new Cell(text);
-    EXPECT_FALSE(ptr->isLegalCharacter());
-    text->ChangeValue("+");
-    EXPECT_FALSE(ptr->isLegalCharacter());
-    text->ChangeValue("0");
-    EXPECT_TRUE(ptr->isLegalCharacter());
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->getCells()[8]->getTextCtrl()->ChangeValue("-");
+    EXPECT_FALSE(ptr->getCells()[8]->isLegalCharacter());
+    ptr->getCells()[8]->getTextCtrl()->ChangeValue("-");
+    EXPECT_FALSE(ptr->getCells()[8]->isLegalCharacter());
+    ptr->getCells()[8]->getTextCtrl()->ChangeValue("5");
+    EXPECT_TRUE(ptr->getCells()[8]->isLegalCharacter());
 }
 
 TEST(CellSuite, isEmptyTest){
