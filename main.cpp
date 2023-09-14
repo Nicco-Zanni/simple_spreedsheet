@@ -5,13 +5,7 @@
 #endif
 
 #include "Spreadsheet.h"
-class MyApp: public wxApp
-{
-public:
-    virtual bool OnInit();
-private:
-    Spreadsheet* frame;
-};
+#include "main.h"
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
