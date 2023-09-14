@@ -20,11 +20,11 @@ public:
 
     ~Spreadsheet() override;
 
-    void setObserverHorizontal(int row, int column, const std::string& formula);
+    bool setObserverHorizontal(int row, int column, const std::string& formula);
 
-    void removeObserver(int row, int column);
+    bool removeObserver(int row, int column);
 
-    void setObserverVertical(int row, int column, const std::string& formula);
+    bool setObserverVertical(int row, int column, const std::string& formula);
 
     void changeFormula(int row, int column, const std::string& formula);
 
