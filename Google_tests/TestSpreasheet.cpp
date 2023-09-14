@@ -40,8 +40,8 @@ TEST(SpreadsheetSuite, setObserveVerticalTest){
     for(int i = 0; i < 4; i++){
         EXPECT_EQ(ptr->getCells()[i*ptr->getColumns()]->getObservers().size(), 1);
     }
-    EXPECT_EQ(ptr->getCells()[15]->getSubjects().size(), 4);
-    EXPECT_EQ(ptr->getCells()[15]->getFormula(), "sum");
+    EXPECT_EQ(ptr->getCells()[8]->getSubjects().size(), 4);
+    EXPECT_EQ(ptr->getCells()[8]->getFormula(), "sum");
 }
 
 TEST(SpreadsheetSuite, removeObserverTest){
