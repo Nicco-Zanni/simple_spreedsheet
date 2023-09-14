@@ -32,6 +32,7 @@ TEST(SpreadsheetSuite, setObserveHorizontalTest){
     }
     EXPECT_EQ(ptr->getCells()[4]->getSubjects().size(), 4);
     EXPECT_EQ(ptr->getCells()[4]->getFormula(), "sum");
+    EXPECT_FALSE(ptr->setObserverHorizontal(-2,-3, "sum"));
 }
 
 TEST(SpreadsheetSuite, setObserveVerticalTest){
@@ -42,6 +43,7 @@ TEST(SpreadsheetSuite, setObserveVerticalTest){
     }
     EXPECT_EQ(ptr->getCells()[8]->getSubjects().size(), 4);
     EXPECT_EQ(ptr->getCells()[8]->getFormula(), "sum");
+    EXPECT_FALSE(ptr->setObserverVertical(-2,-3, "sum"));
 }
 
 TEST(SpreadsheetSuite, removeObserverTest){
@@ -53,4 +55,5 @@ TEST(SpreadsheetSuite, removeObserverTest){
     }
     EXPECT_EQ(ptr->getCells()[4]->getSubjects().size(), 0);
     EXPECT_EQ(ptr->getCells()[4]->getFormula(), "none");
+    EXPECT_FALSE(ptr->removeObserver(-2,-3));
 }
