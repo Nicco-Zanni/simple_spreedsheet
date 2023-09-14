@@ -26,11 +26,10 @@ TEST(CellSuite, isLegalCharacterTest){
 }
 
 TEST(CellSuite, isEmptyTest){
-    auto text = new wxTextCtrl(NULL, wxID_ANY, wxEmptyString);
-    auto ptr = new Cell(text);
-    EXPECT_TRUE(ptr->isEmpty());
-    text->ChangeValue("0");
-    EXPECT_FALSE(ptr->isEmpty());
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    EXPECT_TRUE(ptr->getCells()[10]->isEmpty());
+    ptr->getCells()[10]->getTextCtrl()->SetValue("5");
+    EXPECT_FALSE(ptr->getCells()[10]->isEmpty());
 }
 
 TEST(CellSuite, subscribeTest){
