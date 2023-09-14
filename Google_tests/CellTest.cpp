@@ -72,31 +72,15 @@ TEST(CellSuite, updateMaxTest){
 }
 
 TEST(CellSuite, updateMinTest){
-    auto text = new wxTextCtrl(NULL, wxID_ANY, "0");
-    auto text2 = new wxTextCtrl(NULL, wxID_ANY, "0");
-    auto text3 = new wxTextCtrl(NULL, wxID_ANY, "0");
-    auto ptr = new Cell(text);
-    auto ptr2 = new Cell(text2);
-    auto ptr3 = new Cell(text3);
-    ptr2->subscribe(ptr);
-    ptr3->subscribe(ptr);
-    ptr->addSubject(ptr2);
-    ptr->addSubject(ptr3);
-    ptr->setFormula("min");
-    text2->ChangeValue("3");
-    ptr2->setValue();
-    text3->ChangeValue("4");
-    ptr3->setValue();
-    ptr->update();
-    EXPECT_FLOAT_EQ(ptr->getValue(), 3);
-    text2->ChangeValue("-5");
-    ptr2->setValue();
-    ptr->update();
-    EXPECT_FLOAT_EQ(ptr->getValue(), -5);
-    text3->ChangeValue("-6");
-    ptr3->setValue();
-    ptr->update();
-    EXPECT_FLOAT_EQ(ptr->getValue(), -6);
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->setObserverHorizontal(0,3, "min");
+    ptr->getCells()[0]->getTextCtrl()->SetValue("3");
+    ptr->getCells()[1]->getTextCtrl()->SetValue("4");
+    EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 3);
+    ptr->getCells()[0]->getTextCtrl()->SetValue("-5");
+    EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), -5);
+    ptr->getCells()[1]->getTextCtrl()->SetValue("-6");
+    EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), -6);
 }
 
 TEST(CellSuite, updateMeanTest){
