@@ -33,10 +33,10 @@ TEST(CellSuite, isEmptyTest){
 }
 
 TEST(CellSuite, SetValue){
-    auto text = new wxTextCtrl(NULL, wxID_ANY, "3");
-    auto ptr = new Cell(text);
-    ptr->setValue();
-    EXPECT_FLOAT_EQ(ptr->getValue(), 3);
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->getCells()[12]->getTextCtrl()->SetValue("3");
+    ptr->getCells()[12]->setValue();
+    EXPECT_FLOAT_EQ(ptr->getCells()[12]->getValue(), 3);
 }
 
 TEST(CellSuite, notifyTest){
