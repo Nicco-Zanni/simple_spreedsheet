@@ -5,16 +5,15 @@
 #include <wx/wx.h>
 #include "../Spreadsheet.h"
 #include "../Cell.h"
+#include "../main.h"
 
-/*TEST(CellSuite, CellConstructorTest){
-    auto panel = new wxPanel(NULL, wxID_ANY);
-    auto text = new wxTextCtrl(panel, wxID_ANY, "0");
-    auto ptr = new Cell(text);
-    EXPECT_EQ(ptr->getValue(), 0);
-    EXPECT_EQ(ptr->getFormula(), "none");
-    EXPECT_EQ(ptr->getSubjects().size(), 0);
-    EXPECT_EQ(ptr->getObservers().size(), 0);
-    EXPECT_EQ(ptr->getTextCtrl(), text);
+TEST(CellSuite, CellConstructorTest){
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->getCells()[8]->changeValue(3);
+    EXPECT_EQ(ptr->getCells()[8]->getValue(), 3);
+    EXPECT_EQ(ptr->getCells()[8]->getFormula(), "none");
+    EXPECT_EQ(ptr->getCells()[8]->getSubjects().size(), 0);
+    EXPECT_EQ(ptr->getCells()[8]->getObservers().size(), 0);
 }
 
 TEST(CellSuite, isLegalCharacterTest){
@@ -228,4 +227,4 @@ TEST(CellSuite, setResultTest){
     ptr->changeValue(3);
     ptr->setResult();
     EXPECT_EQ(text->GetValue(), "3");
-}*/
+}
