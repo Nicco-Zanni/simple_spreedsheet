@@ -67,6 +67,11 @@ public:
     void changeValue(double v){
         value = v;
     }
+
+    Formula *getFormula() const;
+
+    void setFormula(Formula *formula);
+
 private:
     double value;
     Formula *formula;

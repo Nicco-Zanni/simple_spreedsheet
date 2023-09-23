@@ -59,3 +59,11 @@ const std::list<Cell *> &Cell::getSubjects() const {
 wxTextCtrl *Cell::getTextCtrl() const {
     return textCtrl;
 }
+
+Formula *Cell::getFormula() const {
+    return formula;
+}
+
+void Cell::setFormula(Formula *formula) {
+    Cell::formula = formula;
+}
