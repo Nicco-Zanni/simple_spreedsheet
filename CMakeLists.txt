@@ -14,6 +14,8 @@ set(SOURCE_FILES main.cpp Spreadsheet.cpp Spreadsheet.h Observer.h Subject.h Cel
         MaxFormula.h
         MinFormula.cpp
         MinFormula.h
+        MeanFormula.cpp
+        MeanFormula.h
 )
 add_executable(simple_spreadsheet main.cpp
         Spreadsheet.cpp
