@@ -7,6 +7,10 @@
 #include "Observer.h"
 #include "Subject.h"
 #include "Formula.h"
+#include "MaxFormula.h"
+#include "SumFormula.h"
+#include "MinFormula.h"
+#include "MeanFormula.h"
 #include <wx/wx.h>
 #include <list>
 #include <string>
@@ -22,6 +26,7 @@ public:
     ~Cell() override{
         observers.clear();
         subjects.clear();
+        delete formula;
         textCtrl->Unbind(wxEVT_TEXT, &Cell::notify, this);
     }
 

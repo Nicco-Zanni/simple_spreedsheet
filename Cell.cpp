@@ -3,10 +3,6 @@
 //
 
 #include "Cell.h"
-#include "MaxFormula.h"
-#include "SumFormula.h"
-#include "MinFormula.h"
-#include "MeanFormula.h"
 
 bool Cell::isLegalCharacter() const {
     if(textCtrl->GetValue() != wxT("-") && textCtrl->GetValue() != wxT("+")){
@@ -32,9 +28,13 @@ void Cell::compute() {
     if(formula != nullptr) {
         std::vector<double> values;
         for (auto subject: subjects) {
-            values.push_back(subject->getValue());
+            if(!subject->isEmpty() && subject->isLegalCharacter())
+                values.push_back(subject->getValue());
         }
-        value = formula->compute(values);
+        if(!values.empty())
+            value = formula->compute(values);
+        else
+            value = 0;
     }
 }
 
@@ -73,16 +73,16 @@ Formula *Cell::getFormula() const {
 void Cell::setFormula(FormulaType type) {
     switch (type) {
         case FormulaType::sum:
-            formula = new SumFormula();
+            formula = new SumFormula;
             break;
         case FormulaType::max:
-            formula = new MaxFormula();
+            formula = new MaxFormula;
             break;
         case FormulaType::min:
-            formula = new MinFormula();
+            formula = new MinFormula;
             break;
         case FormulaType::mean:
-            formula = new MeanFormula();
+            formula = new MeanFormula;
             break;
         case FormulaType::none:
             formula = nullptr;

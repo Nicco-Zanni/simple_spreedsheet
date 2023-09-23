@@ -24,7 +24,14 @@ add_executable(simple_spreadsheet main.cpp
         Subject.h
         Cell.cpp
         Cell.h
+        SumFormula.cpp
+        SumFormula.h
+        MaxFormula.cpp
+        MaxFormula.h
+        MinFormula.cpp
+        MinFormula.h
+        MeanFormula.cpp
+        MeanFormula.h
 )
-add_library(core ${SOURCE_FILES})
 
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES})

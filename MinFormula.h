@@ -9,7 +9,6 @@
 class MinFormula: public Formula{
 public:
     double compute(const std::vector<double> &values) override;
-
 };
 
 

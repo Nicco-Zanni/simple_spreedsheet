@@ -6,8 +6,8 @@
 #define SIMPLE_SPREADSHEET_FORMULA_H
 #include <vector>
 class Formula {
-    public:
-    virtual ~Formula() = default;
+public:
+    virtual ~Formula() {};
 
     virtual double compute(const std::vector<double> &values) = 0;
 };
