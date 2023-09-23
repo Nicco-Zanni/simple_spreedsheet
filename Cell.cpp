@@ -28,7 +28,7 @@ void Cell::update() {
 
 }
 
-void Cell::compute() {
+void Cell::compute(const std::vector<double> &values) {
     if(formula == "sum"){
         computeSum();
     }else if(formula == "max"){

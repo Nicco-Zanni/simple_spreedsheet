@@ -6,9 +6,11 @@
 #define SIMPLE_SPREADSHEET_CELL_H
 #include "Observer.h"
 #include "Subject.h"
+#include "Formula.h"
 #include <wx/wx.h>
 #include <list>
 #include <string>
+#include <vector>
 
 class Cell: public Observer, public Subject{
 public:
@@ -71,11 +73,11 @@ public:
     }
 private:
     double value;
-    std::string formula;
+    Formula *formula;
     wxTextCtrl* textCtrl;
     std::list<Observer*> observers;
     std::list<Cell*> subjects;
-    void compute();
+    void compute(const std::vector<double> &values);
     void computeSum();
     void computeMax();
     void computeMin();
