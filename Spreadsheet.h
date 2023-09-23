@@ -20,13 +20,13 @@ public:
 
     ~Spreadsheet() override;
 
-    bool setObserverHorizontal(int row, int column, const std::string& formula);
+    bool setObserverHorizontal(int row, int column, FormulaType type);
 
     bool removeObserver(int row, int column);
 
-    bool setObserverVertical(int row, int column, const std::string& formula);
+    bool setObserverVertical(int row, int column, FormulaType type);
 
-    void changeFormula(int row, int column, const std::string& formula);
+    void changeFormula(int row, int column, FormulaType type);
 
     bool areLegalCellCoordinates(int x, int y) const;
 
