@@ -71,6 +71,7 @@ Formula *Cell::getFormula() const {
 }
 
 void Cell::setFormula(FormulaType type) {
+    delete formula;
     switch (type) {
         case FormulaType::sum:
             formula = new SumFormula;
