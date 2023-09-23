@@ -48,8 +48,6 @@ public:
         }
     }
 
-    void setFormula(const std::string &formula);
-
     void update() override;
 
     void setResult();
@@ -57,8 +55,6 @@ public:
     void removeSubjects();
 
     void addSubject(Cell* subject);
-
-    const std::string &getFormula() const;
 
     const std::list<Observer *> &getObservers() const;
 
@@ -77,7 +73,7 @@ private:
     wxTextCtrl* textCtrl;
     std::list<Observer*> observers;
     std::list<Cell*> subjects;
-    void compute(const std::vector<double> &values);
+    void compute();
 };
 
 

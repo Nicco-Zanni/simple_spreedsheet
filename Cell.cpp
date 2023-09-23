@@ -11,10 +11,6 @@ bool Cell::isLegalCharacter() const {
     return false;
 }
 
-void Cell::setFormula(const std::string &formula) {
-    Cell::formula = formula;
-}
-
 bool Cell::isEmpty() const {
     if(textCtrl->GetValue() == wxEmptyString){
         return true;
@@ -28,8 +24,12 @@ void Cell::update() {
 
 }
 
-void Cell::compute(const std::vector<double> &values) {
-
+void Cell::compute() {
+    std::vector<double> values;
+    for(auto subject : subjects){
+        values.push_back(subject->getValue());
+    }
+    value = formula->compute(values);
 }
 
 
@@ -46,10 +46,6 @@ void Cell::removeSubjects() {
 
 void Cell::addSubject(Cell *subject) {
     subjects.push_back(subject);
-}
-
-const std::string &Cell::getFormula() const {
-    return formula;
 }
 
 const std::list<Observer *> &Cell::getObservers() const {
