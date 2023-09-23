@@ -55,6 +55,10 @@ public:
         }
     }
 
+    void changeValue(double v){
+        value = v;
+    }
+
     void update() override;
 
     void setResult();
@@ -70,10 +74,6 @@ public:
     bool isEmpty() const;
 
     wxTextCtrl *getTextCtrl() const;
-
-    void changeValue(double v){
-        value = v;
-    }
 
     Formula *getFormula() const;
 

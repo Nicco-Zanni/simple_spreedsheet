@@ -111,3 +111,14 @@ TEST(CellSuite, setResultTest){
     ptr->getCells()[7]->setResult();
     EXPECT_EQ(ptr->getCells()[7]->getTextCtrl()->GetValue(), wxT("5.000000"));
 }
+
+TEST(CellSuite, subcribeAndUnsubscribeTest){
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    ptr->getCells()[4]->subscribe(ptr->getCells()[3]);
+    ptr->getCells()[4]->subscribe(ptr->getCells()[2]);
+    ptr->getCells()[4]->subscribe(ptr->getCells()[1]);
+    EXPECT_EQ(ptr->getCells()[4]->getObservers().size(), 3);
+    ptr->getCells()[4]->unsubscribe(ptr->getCells()[3]);
+    ptr->getCells()[4]->unsubscribe(ptr->getCells()[2]);
+    EXPECT_EQ(ptr->getCells()[4]->getObservers().size(), 1);
+}
