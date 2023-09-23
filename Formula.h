@@ -4,7 +4,9 @@
 
 #ifndef SIMPLE_SPREADSHEET_FORMULA_H
 #define SIMPLE_SPREADSHEET_FORMULA_H
+
 #include <vector>
+
 class Formula {
 public:
     virtual ~Formula() {};

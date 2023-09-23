@@ -4,14 +4,16 @@
 
 #ifndef SIMPLE_SPREADSHEET_MAIN_H
 #define SIMPLE_SPREADSHEET_MAIN_H
+
 #include <wx/wx.h>
 #include "Spreadsheet.h"
-class MyApp: public wxApp
-{
+
+class MyApp : public wxApp {
 public:
     virtual bool OnInit();
+
 private:
-    Spreadsheet* frame;
+    Spreadsheet *frame;
 };
 
 #endif //SIMPLE_SPREADSHEET_MAIN_H

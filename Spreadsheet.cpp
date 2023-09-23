@@ -5,9 +5,11 @@
 #include "Spreadsheet.h"
 #include <wx/wx.h>
 
-Spreadsheet::Spreadsheet(int numOfRows, int numOfColumns, wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos,
-                         const wxSize &size, long style, const wxString &name) : rows(numOfRows), columns(numOfColumns), wxFrame(parent, id, title, pos, size,
-                                                                                         style, name){
+Spreadsheet::Spreadsheet(int numOfRows, int numOfColumns, wxWindow *parent, wxWindowID id, const wxString &title,
+                         const wxPoint &pos,
+                         const wxSize &size, long style, const wxString &name) : rows(numOfRows), columns(numOfColumns),
+                                                                                 wxFrame(parent, id, title, pos, size,
+                                                                                         style, name) {
     setGridSize(numOfRows, numOfColumns);
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     this->SetFont(font);
@@ -25,7 +27,7 @@ void Spreadsheet::setupGrid() {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             auto textCtrl = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
-                                       wxTE_PROCESS_ENTER | wxTE_CENTRE, wxTextValidator(wxFILTER_NUMERIC));
+                                           wxTE_PROCESS_ENTER | wxTE_CENTRE, wxTextValidator(wxFILTER_NUMERIC));
             gridSizerCells->Add(textCtrl, 1, wxALL | wxEXPAND, 0);
             cells.push_back(new Cell(textCtrl));
         }
@@ -43,39 +45,39 @@ void Spreadsheet::setupGrid() {
 }
 
 Spreadsheet::~Spreadsheet() {
-    for(auto cell : cells){
+    for (auto cell: cells) {
         delete cell;
     }
-   cells.clear();
+    cells.clear();
 }
 
-void Spreadsheet::setGridSize(int numOfRows, int numOfColumns){
-    if(numOfRows < 1){
+void Spreadsheet::setGridSize(int numOfRows, int numOfColumns) {
+    if (numOfRows < 1) {
         rows = 1;
-    }else{
+    } else {
         rows = numOfRows;
     }
-    if(numOfColumns < 2){
+    if (numOfColumns < 2) {
         columns = 2;
-    }else{
+    } else {
         columns = numOfColumns;
     }
 }
 
 bool Spreadsheet::areLegalCellCoordinates(int x, int y) const {
-    if(x < 0 || x >= rows || y < 0 || y >= columns){
+    if (x < 0 || x >= rows || y < 0 || y >= columns) {
         return false;
     }
     return true;
 }
 
 bool Spreadsheet::setObserverHorizontal(int row, int column, FormulaType formula) {
-    if(areLegalCellCoordinates(row, column)){
+    if (areLegalCellCoordinates(row, column)) {
         removeObserver(row, column);
         cells[row * columns + column]->setFormula(formula);
-        for(int i = 0; i < column; i++){
-            cells[row* columns + i]->subscribe(cells[row * columns + column]);
-            cells[row * columns + column]->addSubject(cells[row* columns + i]);
+        for (int i = 0; i < column; i++) {
+            cells[row * columns + i]->subscribe(cells[row * columns + column]);
+            cells[row * columns + column]->addSubject(cells[row * columns + i]);
         }
         return true;
     }
@@ -83,7 +85,7 @@ bool Spreadsheet::setObserverHorizontal(int row, int column, FormulaType formula
 }
 
 bool Spreadsheet::removeObserver(int row, int column) {
-    if(areLegalCellCoordinates(row, column)){
+    if (areLegalCellCoordinates(row, column)) {
         cells[row * columns + column]->removeSubjects();
         cells[row * columns + column]->setFormula(none);
         return true;
@@ -92,10 +94,10 @@ bool Spreadsheet::removeObserver(int row, int column) {
 }
 
 bool Spreadsheet::setObserverVertical(int row, int column, FormulaType formula) {
-    if(areLegalCellCoordinates(row, column)){
+    if (areLegalCellCoordinates(row, column)) {
         removeObserver(row, column);
         cells[row * columns + column]->setFormula(formula);
-        for(int i = 0; i < row; i++){
+        for (int i = 0; i < row; i++) {
             cells[i * columns + column]->subscribe(cells[row * columns + column]);
             cells[row * columns + column]->addSubject(cells[i * columns + column]);
         }
@@ -105,7 +107,7 @@ bool Spreadsheet::setObserverVertical(int row, int column, FormulaType formula) 
 }
 
 void Spreadsheet::changeFormula(int row, int column, FormulaType formula) {
-    if(areLegalCellCoordinates(row, column)){
+    if (areLegalCellCoordinates(row, column)) {
         cells[row * columns + column]->setFormula(formula);
     }
 }
