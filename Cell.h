@@ -12,6 +12,8 @@
 #include <string>
 #include <vector>
 
+enum FormulaType{sum, max, min, mean};
+
 class Cell: public Observer, public Subject{
 public:
     explicit Cell(wxTextCtrl* Textctrl): value(0), formula(nullptr), textCtrl(Textctrl){
@@ -70,7 +72,7 @@ public:
 
     Formula *getFormula() const;
 
-    void setFormula(Formula *formula);
+    void setFormula(FormulaType type);
 
 private:
     double value;

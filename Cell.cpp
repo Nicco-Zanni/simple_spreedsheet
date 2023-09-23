@@ -3,6 +3,10 @@
 //
 
 #include "Cell.h"
+#include "MaxFormula.h"
+#include "SumFormula.h"
+#include "MinFormula.h"
+#include "MeanFormula.h"
 
 bool Cell::isLegalCharacter() const {
     if(textCtrl->GetValue() != wxT("-") && textCtrl->GetValue() != wxT("+")){
@@ -64,6 +68,22 @@ Formula *Cell::getFormula() const {
     return formula;
 }
 
-void Cell::setFormula(Formula *formula) {
-    Cell::formula = formula;
+void Cell::setFormula(FormulaType type) {
+    switch (type) {
+        case FormulaType::sum:
+            formula = new SumFormula();
+            break;
+        case FormulaType::max:
+            formula = new MaxFormula();
+            break;
+        case FormulaType::min:
+            formula = new MinFormula();
+            break;
+        case FormulaType::mean:
+            formula = new MeanFormula();
+            break;
+        default:
+            formula = nullptr;
+            break;
+    }
 }
