@@ -78,11 +78,6 @@ private:
     std::list<Observer*> observers;
     std::list<Cell*> subjects;
     void compute(const std::vector<double> &values);
-    void computeSum();
-    void computeMax();
-    void computeMin();
-    void computeMean();
-
 };
 
 
