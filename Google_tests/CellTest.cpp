@@ -4,13 +4,11 @@
 #include <gtest/gtest.h>
 #include <wx/wx.h>
 #include "../Spreadsheet.h"
-#include "../Cell.h"
-#include "../main.h"
 
 TEST(CellSuite, CellConstructorTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
     EXPECT_EQ(ptr->getCells()[8]->getValue(), 0);
-    EXPECT_EQ(ptr->getCells()[8]->getFormula(), "none");
+    EXPECT_EQ(ptr->getCells()[8]->getFormula(), nullptr);
     EXPECT_EQ(ptr->getCells()[8]->getSubjects().size(), 0);
     EXPECT_EQ(ptr->getCells()[8]->getObservers().size(), 0);
 }
@@ -41,7 +39,7 @@ TEST(CellSuite, SetValue){
 
 TEST(CellSuite, notifyTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->setObserverHorizontal(0,3, "sum");
+    ptr->setObserverHorizontal(0,3, sum);
     ptr->getCells()[0]->getTextCtrl()->SetValue("3");
     EXPECT_FLOAT_EQ(ptr->getCells()[0]->getValue(), 3);
     EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 3);
@@ -49,7 +47,7 @@ TEST(CellSuite, notifyTest){
 
 TEST(CellSuite, updateSumTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->setObserverHorizontal(0,3, "sum");
+    ptr->setObserverHorizontal(0,3, sum);
     ptr->getCells()[0]->getTextCtrl()->SetValue("3");
     ptr->getCells()[1]->getTextCtrl()->SetValue("4");
     EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 7);
@@ -61,7 +59,7 @@ TEST(CellSuite, updateSumTest){
 
 TEST(CellSuite, updateMaxTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->setObserverHorizontal(0,3, "max");
+    ptr->setObserverHorizontal(0,3, max);
     ptr->getCells()[0]->getTextCtrl()->SetValue("3");
     ptr->getCells()[1]->getTextCtrl()->SetValue("4");
     EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 4);
@@ -73,7 +71,7 @@ TEST(CellSuite, updateMaxTest){
 
 TEST(CellSuite, updateMinTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->setObserverHorizontal(0,3, "min");
+    ptr->setObserverHorizontal(0,3, min);
     ptr->getCells()[0]->getTextCtrl()->SetValue("3");
     ptr->getCells()[1]->getTextCtrl()->SetValue("4");
     EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 3);
@@ -85,7 +83,7 @@ TEST(CellSuite, updateMinTest){
 
 TEST(CellSuite, updateMeanTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->setObserverHorizontal(0,3, "mean");
+    ptr->setObserverHorizontal(0,3, mean);
     ptr->getCells()[0]->getTextCtrl()->SetValue("3");
     ptr->getCells()[1]->getTextCtrl()->SetValue("4");
     EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 3.5);
@@ -97,7 +95,7 @@ TEST(CellSuite, updateMeanTest){
 
 TEST(CellSuite, updateNoneTest){
     auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
-    ptr->setObserverHorizontal(0,3, "aiaifb");
+    ptr->setObserverHorizontal(0,3, none);
     ptr->getCells()[0]->getTextCtrl()->SetValue("3");
     ptr->getCells()[1]->getTextCtrl()->SetValue("4");
     EXPECT_FLOAT_EQ(ptr->getCells()[3]->getValue(), 0);

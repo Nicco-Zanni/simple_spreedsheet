@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.8)
 add_subdirectory(lib)
 include(${wxWidgets_USE_FILE})
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-set(files ../Spreadsheet.cpp ../Spreadsheet.h ../Cell.cpp ../Cell.h ../main.h)
+set(files ../Spreadsheet.cpp ../Spreadsheet.h ../Cell.cpp ../Cell.h ../main.h ../SumFormula.h ../SumFormula.cpp
+        ../MaxFormula.h ../MaxFormula.cpp ../MinFormula.h ../MinFormula.cpp ../MeanFormula.h ../MeanFormula.cpp)
 add_executable(Google_Test_run runAllTests.cpp
         TestSpreasheet.cpp
         CellTest.cpp ${files})
