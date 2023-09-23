@@ -29,11 +29,13 @@ void Cell::update() {
 }
 
 void Cell::compute() {
-    std::vector<double> values;
-    for(auto subject : subjects){
-        values.push_back(subject->getValue());
+    if(formula != nullptr) {
+        std::vector<double> values;
+        for (auto subject: subjects) {
+            values.push_back(subject->getValue());
+        }
+        value = formula->compute(values);
     }
-    value = formula->compute(values);
 }
 
 
