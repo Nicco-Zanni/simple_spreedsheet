@@ -20,13 +20,13 @@ public:
 
     ~Spreadsheet() override;
 
-    bool setObserverHorizontal(int row, int column, FormulaType type);
+    bool setObserverHorizontal(int row, int column, FormulaType formula);
 
     bool removeObserver(int row, int column);
 
-    bool setObserverVertical(int row, int column, FormulaType type);
+    bool setObserverVertical(int row, int column, FormulaType formula);
 
-    void changeFormula(int row, int column, FormulaType type);
+    void changeFormula(int row, int column, FormulaType formula);
 
     bool areLegalCellCoordinates(int x, int y) const;
 

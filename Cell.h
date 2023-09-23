@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-enum FormulaType{sum, max, min, mean};
+enum FormulaType{sum, max, min, mean, none};
 
 class Cell: public Observer, public Subject{
 public:

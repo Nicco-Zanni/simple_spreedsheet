@@ -69,7 +69,7 @@ bool Spreadsheet::areLegalCellCoordinates(int x, int y) const {
     return true;
 }
 
-bool Spreadsheet::setObserverHorizontal(int row, int column, const std::string &formula) {
+bool Spreadsheet::setObserverHorizontal(int row, int column, FormulaType formula) {
     if(areLegalCellCoordinates(row, column)){
         removeObserver(row, column);
         cells[row * columns + column]->setFormula(formula);
@@ -85,13 +85,13 @@ bool Spreadsheet::setObserverHorizontal(int row, int column, const std::string &
 bool Spreadsheet::removeObserver(int row, int column) {
     if(areLegalCellCoordinates(row, column)){
         cells[row * columns + column]->removeSubjects();
-        cells[row * columns + column]->setFormula();
+        cells[row * columns + column]->setFormula(none);
         return true;
     }
     return false;
 }
 
-bool Spreadsheet::setObserverVertical(int row, int column, const std::string &formula) {
+bool Spreadsheet::setObserverVertical(int row, int column, FormulaType formula) {
     if(areLegalCellCoordinates(row, column)){
         removeObserver(row, column);
         cells[row * columns + column]->setFormula(formula);
@@ -104,7 +104,7 @@ bool Spreadsheet::setObserverVertical(int row, int column, const std::string &fo
     return false;
 }
 
-void Spreadsheet::changeFormula(int row, int column, const std::string &formula) {
+void Spreadsheet::changeFormula(int row, int column, FormulaType formula) {
     if(areLegalCellCoordinates(row, column)){
         cells[row * columns + column]->setFormula(formula);
     }

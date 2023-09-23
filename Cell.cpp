@@ -82,6 +82,9 @@ void Cell::setFormula(FormulaType type) {
         case FormulaType::mean:
             formula = new MeanFormula();
             break;
+        case FormulaType::none:
+            formula = nullptr;
+            break;
         default:
             formula = nullptr;
             break;
