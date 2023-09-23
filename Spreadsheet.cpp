@@ -85,7 +85,7 @@ bool Spreadsheet::setObserverHorizontal(int row, int column, const std::string &
 bool Spreadsheet::removeObserver(int row, int column) {
     if(areLegalCellCoordinates(row, column)){
         cells[row * columns + column]->removeSubjects();
-        cells[row * columns + column]->setFormula("none");
+        cells[row * columns + column]->setFormula(nullptr);
         return true;
     }
     return false;

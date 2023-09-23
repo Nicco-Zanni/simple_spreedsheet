@@ -14,7 +14,7 @@
 
 class Cell: public Observer, public Subject{
 public:
-    explicit Cell(wxTextCtrl* Textctrl): value(0), formula("none"), textCtrl(Textctrl){
+    explicit Cell(wxTextCtrl* Textctrl): value(0), formula(nullptr), textCtrl(Textctrl){
         textCtrl->Bind(wxEVT_TEXT, &Cell::notify, this);
     }
     ~Cell() override{
