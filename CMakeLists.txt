@@ -8,6 +8,8 @@ add_subdirectory(Google_tests)
 set(SOURCE_FILES main.cpp Spreadsheet.cpp Spreadsheet.h Observer.h Subject.h Cell.cpp Cell.h
         main.h
         Formula.h
+        SumFormula.cpp
+        SumFormula.h
 )
 add_executable(simple_spreadsheet main.cpp
         Spreadsheet.cpp
