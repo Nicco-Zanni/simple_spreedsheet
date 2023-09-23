@@ -58,4 +58,15 @@ TEST(SpreadsheetSuite, removeObserverTest){
     EXPECT_FALSE(ptr->removeObserver(-2,-3));
 }
 
-TEST(SpreadsheetSuite, changeFor)
+TEST(SpreadsheetSuite, changeFormulaTest){
+    auto ptr = new Spreadsheet(5, 5,NULL, wxID_ANY, "Spreadsheet");
+    EXPECT_TRUE(ptr->getCells()[4]->getFormula() == nullptr);
+    ptr->changeFormula(0, 4,sum);
+    EXPECT_TRUE(typeid(*(ptr->getCells()[4]->getFormula())) == typeid(SumFormula));
+    ptr->changeFormula(0, 4,max);
+    EXPECT_TRUE(typeid(*(ptr->getCells()[4]->getFormula())) == typeid(MaxFormula));
+    ptr->changeFormula(0, 4,min);
+    EXPECT_TRUE(typeid(*(ptr->getCells()[4]->getFormula())) == typeid(MinFormula));
+    ptr->changeFormula(0, 4,mean);
+    EXPECT_TRUE(typeid(*(ptr->getCells()[4]->getFormula())) == typeid(MeanFormula));
+}
