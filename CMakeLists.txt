@@ -10,6 +10,8 @@ set(SOURCE_FILES main.cpp Spreadsheet.cpp Spreadsheet.h Observer.h Subject.h Cel
         Formula.h
         SumFormula.cpp
         SumFormula.h
+        MaxFormula.cpp
+        MaxFormula.h
 )
 add_executable(simple_spreadsheet main.cpp
         Spreadsheet.cpp
