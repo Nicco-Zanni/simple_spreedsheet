@@ -6,8 +6,8 @@
 
 double MinFormula::compute(const std::vector<double> &values) {
     double min = values[0];
-    for(auto value : values) {
-        if(value < min) {
+    for (auto value: values) {
+        if (value < min) {
             min = value;
         }
     }

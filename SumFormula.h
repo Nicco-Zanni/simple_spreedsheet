@@ -6,10 +6,10 @@
 #define SIMPLE_SPREADSHEET_SUMFORMULA_H
 
 #include "Formula.h"
-class SumFormula: public Formula{
+
+class SumFormula : public Formula {
 public:
     double compute(const std::vector<double> &values) override;
 };
-
 
 #endif //SIMPLE_SPREADSHEET_SUMFORMULA_H

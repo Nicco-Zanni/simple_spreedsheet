@@ -7,7 +7,7 @@
 #include "../MeanFormula.h"
 #include <gtest/gtest.h>
 
-TEST(FormulaSuite, SumFormulaComputeTest){
+TEST(FormulaSuite, SumFormulaComputeTest) {
     SumFormula formula;
     std::vector<double> values = {1.333, 2.457, -3.9863, 4.456, 5.1};
     EXPECT_EQ(formula.compute(values), 9.3597);
@@ -15,7 +15,7 @@ TEST(FormulaSuite, SumFormulaComputeTest){
     EXPECT_EQ(formula.compute(values), -17.3323);
 }
 
-TEST(FormulaSuite, MaxFormulaComputeTest){
+TEST(FormulaSuite, MaxFormulaComputeTest) {
     MaxFormula formula;
     std::vector<double> values = {1.333, 2.457, -3.9863, 4.456, 5.1, 0};
     EXPECT_EQ(formula.compute(values), 5.1);
@@ -23,7 +23,7 @@ TEST(FormulaSuite, MaxFormulaComputeTest){
     EXPECT_EQ(formula.compute(values), -1.333);
 }
 
-TEST(FormulaSuite, MinFormulaComputeTest){
+TEST(FormulaSuite, MinFormulaComputeTest) {
     MinFormula formula;
     std::vector<double> values = {1.333, 2.457, -3.9863, 4.456, 5.1, 0};
     EXPECT_EQ(formula.compute(values), -3.9863);
@@ -31,7 +31,7 @@ TEST(FormulaSuite, MinFormulaComputeTest){
     EXPECT_EQ(formula.compute(values), -5.1896);
 }
 
-TEST(FormulaSuite, MeanFormulaComputeTest){
+TEST(FormulaSuite, MeanFormulaComputeTest) {
     MeanFormula formula;
     std::vector<double> values = {1.333, 2.457, -3.9863, 4.456, 5.1, 0};
     EXPECT_EQ(formula.compute(values), 1.55995);

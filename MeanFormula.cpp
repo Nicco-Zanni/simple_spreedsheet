@@ -6,7 +6,7 @@
 
 double MeanFormula::compute(const std::vector<double> &values) {
     double mean = 0;
-    for(auto value : values) {
+    for (auto value: values) {
         mean += value;
     }
     return mean / values.size();

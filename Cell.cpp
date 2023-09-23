@@ -5,14 +5,14 @@
 #include "Cell.h"
 
 bool Cell::isLegalCharacter() const {
-    if(textCtrl->GetValue() != wxT("-") && textCtrl->GetValue() != wxT("+")){
+    if (textCtrl->GetValue() != wxT("-") && textCtrl->GetValue() != wxT("+")) {
         return true;
     }
     return false;
 }
 
 bool Cell::isEmpty() const {
-    if(textCtrl->GetValue() == wxEmptyString){
+    if (textCtrl->GetValue() == wxEmptyString) {
         return true;
     }
     return false;
@@ -25,13 +25,13 @@ void Cell::update() {
 }
 
 void Cell::compute() {
-    if(formula != nullptr) {
+    if (formula != nullptr) {
         std::vector<double> values;
         for (auto subject: subjects) {
-            if(!subject->isEmpty() && subject->isLegalCharacter())
+            if (!subject->isEmpty() && subject->isLegalCharacter())
                 values.push_back(subject->getValue());
         }
-        if(!values.empty())
+        if (!values.empty())
             value = formula->compute(values);
         else
             value = 0;
@@ -44,7 +44,7 @@ void Cell::setResult() {
 }
 
 void Cell::removeSubjects() {
-    for(auto subject : subjects){
+    for (auto subject: subjects) {
         subject->unsubscribe(this);
     }
     subjects.clear();
