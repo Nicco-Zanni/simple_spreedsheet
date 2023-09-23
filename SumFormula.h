@@ -5,9 +5,10 @@
 #ifndef SIMPLE_SPREADSHEET_SUMFORMULA_H
 #define SIMPLE_SPREADSHEET_SUMFORMULA_H
 
-
-class SumFormula {
-
+#include "Formula.h"
+class SumFormula: public Formula{
+public:
+    double compute(const std::vector<double> &values) override;
 };
 
 
