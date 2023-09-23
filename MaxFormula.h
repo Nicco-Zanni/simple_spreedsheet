@@ -4,10 +4,11 @@
 
 #ifndef SIMPLE_SPREADSHEET_MAXFORMULA_H
 #define SIMPLE_SPREADSHEET_MAXFORMULA_H
+#include "Formula.h"
 
-
-class MaxFormula {
-
+class MaxFormula: public Formula{
+public:
+    double compute(const std::vector<double> &values) override;
 };
 
 
