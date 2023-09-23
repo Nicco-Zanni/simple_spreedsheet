@@ -30,3 +30,11 @@ TEST(FormulaSuite, MinFormulaComputeTest){
     values = {-1.333, -2.457, -3.9863, -4.456, -5.1896, -1.334, -5.1895};
     EXPECT_EQ(formula.compute(values), -5.1896);
 }
+
+TEST(FormulaSuite, MeanFormulaComputeTest){
+    MeanFormula formula;
+    std::vector<double> values = {1.333, 2.457, -3.9863, 4.456, 5.1, 0};
+    EXPECT_EQ(formula.compute(values), 1.55995);
+    values = {-1.333, -2.457, 3.986, 5.189, -1.334};
+    EXPECT_EQ(formula.compute(values), 0.8102);
+}
