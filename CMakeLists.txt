@@ -6,7 +6,9 @@ find_package(wxWidgets REQUIRED net gl core base xrc adv)
 include(${wxWidgets_USE_FILE})
 add_subdirectory(Google_tests)
 set(SOURCE_FILES main.cpp Spreadsheet.cpp Spreadsheet.h Observer.h Subject.h Cell.cpp Cell.h
-        main.h)
+        main.h
+        Formula.h
+)
 add_executable(simple_spreadsheet main.cpp
         Spreadsheet.cpp
         Spreadsheet.h
